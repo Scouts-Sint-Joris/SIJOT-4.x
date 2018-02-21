@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Sijot\Model' => 'Sijot\Policies\ModelPolicy',
+        \Sijot\User::class => \Sijot\Policies\UserPolicy::class,
     ];
 
     /**
@@ -21,10 +21,8 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerPolicies();
-
-        //
     }
 }

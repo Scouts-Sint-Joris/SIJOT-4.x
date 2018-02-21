@@ -2,8 +2,10 @@
 
 namespace Sijot\Http\Controllers\Backend;
 
+use Gate;
 use Sijot\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Sijot\Repositories\RestrictRepository;
 use Sijot\Repositories\UserRepository;
 
 /**
@@ -15,19 +17,25 @@ use Sijot\Repositories\UserRepository;
  */
 class BlockController extends Controller
 {
+    /** @var \Sijot\Repositories\RestrictRepository $restriction */
+    private $restriction; 
+
     /** @var \Sijot\Repositories\UserRepository $user */
-    private $users; 
+    private $user;
 
     /**
      * BlockController Constructor. 
      * 
-     * @param  UserRepository  $users  Abstraction layer between controller and database related logic. 
+     * @param  UserRepository      $user         Abstraction layer between controller and database related logic.
+     * @param  RestrictRepository  $restriction  Abstraction layer between controller and database related logic. 
      * @return void
      */
-    public function __construct(UserRepository $users) 
+    public function __construct(UserRepository $user, RestrictRepository $restriction) 
     {
         $this->middleware(['auth']);
-        $this->users = $users;
+
+        $this->user        = $user;
+        $this->restriction = $restriction;
     }
 
     /**
@@ -38,9 +46,19 @@ class BlockController extends Controller
      * @param  int  $user  The unique identifier from the user in the database storage.
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(): RedirectResponse
+    public function update(int $user): RedirectResponse
     {
-        //
+        $user = $this->user->findOrFail($user); 
+
+        if (Gate::allows('create-ban', $user)) {     //! The given user entity is not the same then the authenticated user
+            if ($this->restriction->create($user)) { //! The given user is blocked in the database
+                flash($user->name . ' is geblokkeerd in de applicatie voor 2 weken.s')->success()->important();
+            }
+        } else { //! User is the same them the authenticated user
+            flash('Helaas! Je kunt jezelf niet blokkeren in de applicatie!')->warning()->important();
+        }
+
+        return redirect()->route('gebruikers.index');
     }
 
     /**
@@ -51,8 +69,8 @@ class BlockController extends Controller
      * @param  int  $user  The uniqie identifier from the user in the database storage
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(int $id): RedirectResponse
+    public function destroy(int $user): RedirectResponse
     {
-        //
+       //
     }
 }

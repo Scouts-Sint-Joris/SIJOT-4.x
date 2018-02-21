@@ -37,6 +37,10 @@
                                         <td> 
                                             @if ($user->isOnline())
                                                 <span class="label label-success">Online</span>
+                                            @elseif ($user->isBanned())
+                                                <span class="label label-danger">
+                                                    <i class="fa fa-fw fa-lock"></i> Geblokkeerd</i>
+                                                </span>
                                             @else {{-- User is offline --}}
                                                 <span class="label label-danger">Offline</span>
                                             @endif
@@ -47,9 +51,14 @@
                                         <td>{{ $user->created_at->format('d-m-Y H:i') }}</td>
 
                                         <td> {{-- Options --}}
-                                            <a href="#blockUser" data-toggle="modal" data-username="{{ $user->name}}" data-user="{{ $user->id }}" class="text-danger">
-                                                <i data-toggle="tooltip" data-placement="bottom" title="Blokkeer" class="fa fa-fw fa-lock"></i>
-                                            </a>
+                                            @if ($user->isBanned())
+                                                <a href="#blockUser" data-toggle="modal" data-username="{{ $user->name}}" data-user="{{ $user->id }}" class="text-danger">
+                                                    <i data-toggle="tooltip" data-placement="bottom" title="Blokkeer" class="fa fa-fw fa-lock"></i>
+                                                </a>
+                                            @else {{-- User is blocked so we need a function to revoke it. --}}
+                                                
+                                            @endif
+
                                             <a href="#deleteUser" data-toggle="modal" data-username="{{ $user->name }}" data-user="{{ $user->id }}" class="text-danger">
                                                 <i data-toggle="tooltip" data-placement="bottom" title="Verwijder" class="fa fa-fw fa-close"></i>
                                             </a>
