@@ -75,7 +75,7 @@
                     <div class="row">
                         <div class="col-6">
                             <ul class="list-unstyled">
-                                <li><a href="">Aanmelden</a></li>
+                                <li><a href="{{ route('login') }}">Aanmelden</a></li>
                                 <li><a href="">Disclaimer</a></li>
                                 <li><a href="">Verhuur</a></li>
                                 <li><a href="">Takken</a></li>
@@ -83,9 +83,10 @@
                         </div>
                         <div class="col-6">
                             <ul class="list-unstyled">
-                                <li><a href="">Hopper Winkel</a></li>
-                                <li><a href="">Hopper Jeugdverblijven</a></li>
-                                <li><a href="">Scouts en Gidsen Vlaanderen</a></li>
+                                <li><a href="https://www.hopper.be/winkel">Hopper Winkel</a></li>
+                                <li><a href="https://www.hopper.be/jeugdverblijf">Hopper Jeugdverblijven</a></li>
+                                <li><a href="https://www.scoutsengidsenvlaanderen.be/">Scouts en Gidsen Vlaanderen</a></li>
+                                <li><a href="http://www.gouwkempen.be/">Gouw Kempen</a></li>
                             </ul>
                         </div>
                     </div>
@@ -98,7 +99,7 @@
                     <br>
                 </div>
                 <div class="col-md-2">
-                    <h5 class="text-md-right">Contact Us</h5>
+                    <h5 class="text-md-right">Contacteer ons</h5>
                     <hr>
                 </div>
                 <div class="col-md-5">
@@ -120,5 +121,12 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/nl_NL/sdk.js#xfbml=1&version=v2.12';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

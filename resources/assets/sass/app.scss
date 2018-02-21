@@ -9,3 +9,13 @@
 // Components
 @import "_partials/base";
 @import "_partials/footer";
+@import "_partials/images";
+
+.component-border {
+  border: 0;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+}
+
+.title-news {
+  color: #572600;
+}

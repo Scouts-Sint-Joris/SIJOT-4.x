@@ -10049,3 +10049,18 @@ footer .form-control {
   padding: 0.7em 1em;
 }
 
+.img-front {
+  width: 100%;
+  height: 325px;
+}
+
+.component-border {
+  border: 0;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.title-news {
+  color: #572600;
+}
+
