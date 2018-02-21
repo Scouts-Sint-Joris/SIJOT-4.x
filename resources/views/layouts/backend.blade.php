@@ -133,7 +133,7 @@
                         </li>
 
                         <li>
-                            <a href="">
+                            <a href="{{ route('nieuws.index') }}">
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Nieuws</span>
                             </a>
                         </li>
