@@ -15,16 +15,22 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password',
-    ];
+    protected $fillable = ['name', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for arrays.
      *
      * @var array
      */
-    protected $hidden = [
-        'password', 'remember_token',
-    ];
+    protected $hidden = ['password', 'remember_token'];
+
+    /**
+     * Check if the user entity is online. 
+     * 
+     * @return bool
+     */
+    public function isOnline(): bool
+    {
+        return Cache::has('user-is-online-' . $this->id);
+    }
 }

@@ -6,6 +6,7 @@ use Sijot\User;
 use ActivismeBE\DatabaseLayering\Repositories\Contracts\RepositoryInterface;
 use ActivismeBE\DatabaseLayering\Repositories\Eloquent\Repository;
 use Spatie\Permission\Models\Role;
+use Illuminate\Pagination\Paginator;
 
 /**
  * Class UserRepository
@@ -40,5 +41,16 @@ class UserRepository extends Repository
             $commandBus->warn($user->email);
             $commandBus->warn('Password is "secret"');
         }
+    }
+
+    /**
+     * Get all the users in a paginated format. 
+     * 
+     * @param  int  $perPage  The amount of results u want to display per page. 
+     * @return \Illuminate\Pagination\Paginator
+     */
+    public function getListing(int $perPage): Paginator
+    {
+        return $this->model->simplePaginate($perPage);
     }
 }

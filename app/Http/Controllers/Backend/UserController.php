@@ -7,6 +7,7 @@ use Sijot\Http\Controllers\Controller;
 use Sijot\Repositories\UserRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
+use Sijot\Repositories\RoleRepository;
 
 /**
  * Class UserController 
@@ -17,6 +18,9 @@ use Illuminate\View\View;
  */
 class UserController extends Controller
 {
+    /** @var \Sijot\Repositories\UserRepository $users */
+    private $users; 
+    
     /**
      * UserController constructor. 
      * 
@@ -36,17 +40,18 @@ class UserController extends Controller
      */
     public function index(): View
     {
-        return view('backend.users.index');
+        return view('backend.users.index', ['users' => $this->users->getListing(15)]);
     }
 
     /**
      * Create view for a new user. (Login)
      * 
+     * @param  \Sijot\Repositories\RoleRepository  $roles  Used for the role listing in the form.
      * @return \Illuminate\View\View
      */
-    public function create(): View
+    public function create(RoleRepository $roles): View
     {
-        return view('backend.users.create');
+        return view('backend.users.create', ['role' => $roles->all(['name'])]);
     }
 
     /**
@@ -62,6 +67,8 @@ class UserController extends Controller
 
     /**
      * Show a the information from a specifc user in the system.
+     * ---
+     * Returns HTTP/1 - 404 When no user is found in the database storage. 
      * 
      * @param  \Sijot\User  $user  The database entity from the user.
      * @return \Illuminate\View\View
@@ -73,6 +80,8 @@ class UserController extends Controller
 
     /**
      * The edit view for the given user entity. 
+     * ---
+     * Returns HTTP/1 - 404 When no user is found in the database storage. 
      * 
      * @param  \Sijot\User  $user  The database entity from the user.
      * @return \Illuminate\View\View
@@ -84,6 +93,8 @@ class UserController extends Controller
 
     /**
      * Update u user in the database. 
+     * ---
+     * Returns HTTP/1 - 404 When no user is found in the database storage. 
      * 
      * @param  \Sijot\Http\Requests\Backend\Users\UpdateValidator  $input  The given user input. (Validated)
      * @param  \Sijot\User                                         $user   The database entity from the user. 
@@ -96,6 +107,8 @@ class UserController extends Controller
 
     /**
      * Delete a user in the database storage
+     * ---
+     * Returns HTTP/1 - 404 When no user is found in the database storage. 
      * 
      * @param  \Sijot\User  $user  The database entity from the user. 
      * @return \Illuminate\Http\RedirectResponse
