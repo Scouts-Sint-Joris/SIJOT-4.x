@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><i class="fa fa-dashboard"></i> <a href="{{ route('home') }}">Home</a></li>
+        <li><i class="fa fa-fw fa-dashboard"></i> <a href="{{ route('home') }}">Home</a></li>
         <li><a href="{{ route('nieuws.index') }}">Nieuws berichten</a></li>
         <li>Bericht toevoegen</li>
     </ol>
@@ -18,7 +18,38 @@
         
         <div class="tab-content">
             <div class="tab-pane active">
-                
+                <form method="POST" action="{{ route('nieuws.store') }}" class="form-horizontal">
+                    @csrf {{-- Form field protection --}}
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Titel: <span class="text-danger">*</span></label>
+
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" placeholder="Titel van het nieuwsbericht">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-2">Status: <span class="text-danger">*</span></label>
+
+                        <div class="col-md-4">
+                        
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button class="btn btn-sm btn-success" type="submit">
+                                <i class="fa fa-check"></i> Opslaan
+                            </button>
+
+                            <a href="{{ route('nieuws.index') }}" class="btn btn-sm btn-danger">
+                                <i class="fa fa-undo"></i> Annuleren
+                            </a>
+                        </div>
+                    </div>
+
+                </form>
             </div> {{-- /.tab-pane --}}
         </div> {{-- /.tab-content --}}
     </div>

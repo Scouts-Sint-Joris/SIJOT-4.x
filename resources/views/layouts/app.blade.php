@@ -45,10 +45,18 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Logout
+                                    <a class="dropdown-item" href="{{ route('home')}}">
+                                        <i class="fas fa-fw fa-cog"></i> Beheer
+                                    </a>
+
+                                    <a class="dropdown-item" href="">
+                                        <i class="fas fa-fw fa-wrench"></i> Instellingen
+                                    </a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-fw fa-sign-out-alt"></i> Afmelden
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

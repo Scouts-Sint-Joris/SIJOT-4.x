@@ -6,7 +6,7 @@
 
 @section('breadcrumb')
     <ol class="breadcrumb">
-        <li><i class="fa fa-dashboard"></i> <a href="{{ route('home') }}">Home</a></li>
+        <li><i class="fa fa-fw fa-dashboard"></i> <a href="{{ route('home') }}">Home</a></li>
         <li>Nieuws berichten</li>
     </ol>
 @endsection

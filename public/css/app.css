@@ -10064,6 +10064,14 @@ footer .form-control {
   color: #572600;
 }
 
+.dropdown-item {
+  font-size: 0.875rem;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  color: #fff;
+}
+
 .social-youtube {
   color: #ff0000;
 }
