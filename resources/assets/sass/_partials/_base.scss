@@ -1,0 +1,10 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  // Margin bottom by footer height
+  background: #bdd732 url('../img/background.png') no-repeat left top 55px;
+  margin-bottom: 300px;
+}
