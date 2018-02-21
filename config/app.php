@@ -159,8 +159,12 @@ return [
         // Sijot\Providers\BroadcastServiceProvider::class,
         Sijot\Providers\EventServiceProvider::class,
         Sijot\Providers\RouteServiceProvider::class,
-        Sijot\Providers\HelperServiceProvider::class
 
+        /**
+         * Custom providers
+         */
+        Sijot\Providers\HelperServiceProvider::class,
+        Sijot\Providers\ViewComposerProvider::class,
     ],
 
     /*
