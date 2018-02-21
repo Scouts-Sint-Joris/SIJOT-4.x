@@ -25,7 +25,7 @@ class LogLastUserActivity
     {
         if (auth()->check()) {
             $expiresAt = now()->addMinutes(5);
-            Cache::put('user-is-online-' . Auth::user()->id, true, $expiresAt);
+            Cache::put('user-is-online-' . auth()->user()->id, true, $expiresAt);
         }
 
         return $next($request);

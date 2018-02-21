@@ -34,6 +34,26 @@
                                 @foreach ($users as $user) {{-- Loop through the users --}}
                                     <tr>
                                         <td><strong>#U{{ $user->id }}</strong></td>
+                                        <td> 
+                                            @if ($user->isOnline())
+                                                <span class="label label-success">Online</span>
+                                            @else {{-- User is offline --}}
+                                                <span class="label label-danger">Offline</span>
+                                            @endif
+                                        </td>
+                                        <td>{{ $user->name }}</td>
+                                        <td><a href="mailto:{{ $user->email}}">{{ $user->email }}</a></td>
+                                        <td>{{ $user->updated_at->format('d-m-Y') }}</td>
+                                        <td>{{ $user->created_at->format('d-m-Y H:i') }}</td>
+
+                                        <td> {{-- Options --}}
+                                            <a href="" class="text-danger">
+                                                <i class="fa fa-fw fa-lock"></i>
+                                            </a>
+                                            <a href="" class="text-danger">
+                                                <i class="fa fa-fw fa-close"></i>
+                                            </a>
+                                        </td> {{-- /END options --}}
                                     </tr>
                                 @endforeach {{-- /END loop --}}
                             @else {{-- No users found in the system --}}
