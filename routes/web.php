@@ -22,4 +22,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::prefix('/admin')->group(function () {
     Route::resource('nieuws', 'Backend\ArticleController');
     Route::resource('gebruikers', 'Backend\UserController');
+    Route::resource('restrictie', 'Backend\BlockController');
 });

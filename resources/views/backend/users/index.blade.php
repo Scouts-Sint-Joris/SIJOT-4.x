@@ -47,7 +47,7 @@
                                         <td>{{ $user->created_at->format('d-m-Y H:i') }}</td>
 
                                         <td> {{-- Options --}}
-                                            <a href="" class="text-danger">
+                                            <a href="#blockUser" data-toggle="modal" data-username="{{ $user->name}}" data-user="{{ $user->id }}" class="text-danger">
                                                 <i data-toggle="tooltip" data-placement="bottom" title="Blokkeer" class="fa fa-fw fa-lock"></i>
                                             </a>
                                             <a href="#deleteUser" data-toggle="modal" data-username="{{ $user->name }}" data-user="{{ $user->id }}" class="text-danger">
@@ -57,6 +57,9 @@
                                     </tr>
                                 @endforeach {{-- /END loop --}}
                             @else {{-- No users found in the system --}}
+                                <tr>
+                                    <td><span class="text-muted">(Er zijn geen gebruikers gevonden)</span></td>
+                                </tr>
                             @endif
                         </tbody>
                     </table>
@@ -68,6 +71,7 @@
     </div>
 
     @include('backend.users.modals.confirm-delete')
+    @include('backend.users.modals.confirm-block')
 @endsection
 
 @push('scripts')
