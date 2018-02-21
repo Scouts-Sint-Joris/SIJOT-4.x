@@ -114,8 +114,8 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a href="">
+                        <li class="{{ isActive('admin/gebruikers*') }}">
+                            <a href="{{ route('gebruikers.index') }}">
                                 <i class="fa fa-users" aria-hidden="true"></i> <span>Gebruikersbeheer</span>
                             </a>
                         </li>
@@ -132,7 +132,7 @@
                             </a>
                         </li>
 
-                        <li>
+                        <li class="{{ isActive('admin/nieuws*') }}">
                             <a href="{{ route('nieuws.index') }}">
                                 <i class="fa fa-newspaper-o" aria-hidden="true"></i> <span>Nieuws</span>
                             </a>
