@@ -10064,3 +10064,42 @@ footer .form-control {
   color: #572600;
 }
 
+.social-youtube {
+  color: #ff0000;
+}
+
+.social-youtube:hover,
+.social-youtube:focus {
+  color: #ff3333;
+}
+
+.social-facebook {
+  color: #3b5998;
+}
+
+.social-facebook:hover,
+.social-facebook:focus {
+  text-decoration: none;
+  color: #2d4373;
+}
+
+.social-twitter {
+  color: #1da1f2;
+}
+
+.social-twitter:hover,
+.social-twitter:focus {
+  text-decoration: none;
+  color: #0c85d0;
+}
+
+.social-github {
+  color: #fafafa;
+}
+
+.social-github:hover,
+.social-github:focus {
+  text-decoration: none;
+  color: #e1e0e0;
+}
+

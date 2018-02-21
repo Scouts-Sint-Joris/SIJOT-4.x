@@ -91,10 +91,10 @@
                         </div>
                     </div>
                     <ul class="nav">
-                        <li class="nav-item"><a href="" class="nav-link pl-0"><i class="fab fa-facebook fa-lg"></i></a></li>
-                        <li class="nav-item"><a href="" class="nav-link"><i class="fab fa-youtube fa-lg"></i></a></li>
-                        <li class="nav-item"><a href="" class="nav-link"><i class="fab fa-twitter fa-lg"></i></a></li>
-                        <li class="nav-item"><a href="" class="nav-link"><i class="fab fa-github fa-lg"></i></a></li>
+                        <li class="nav-item"><a href="" class="nav-link social-facebook pl-0"><i class="fab fa-facebook fa-lg"></i></a></li>
+                        <li class="nav-item"><a href="" class="nav-link social-youtube"><i class="fab fa-youtube fa-lg"></i></a></li>
+                        <li class="nav-item"><a href="" class="nav-link social-twitter"><i class="fab fa-twitter fa-lg"></i></a></li>
+                        <li class="nav-item"><a href="" class="nav-link social-github"><i class="fab fa-github fa-lg"></i></a></li>
                     </ul>
                     <br>
                 </div>

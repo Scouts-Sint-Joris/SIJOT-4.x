@@ -22,7 +22,7 @@
                     </div> {{-- END news --}}
 
                     <div class="col-md-3"> {{-- Sidenav --}}
-                        <div class="fb-page" data-href="https://www.facebook.com/imdb" data-width="340" data-hide-cover="false" data-show-facepile="true"></div>
+                        <div class="fb-page" data-href="https://www.facebook.com/sintjoristurnhout" data-width="340" data-hide-cover="false" data-show-facepile="true"></div>
                     </div> {{-- END Sidenav --}}
                 </div> {{-- END grid --}}
             </div>

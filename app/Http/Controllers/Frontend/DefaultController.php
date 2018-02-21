@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace Sijot\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use Sijot\Http\Controllers\Controller;
 use Illuminate\View\View;
 
 /**
@@ -11,7 +11,7 @@ use Illuminate\View\View;
  *
  * @author      Tim Joosten <topairy@gmail.com>
  * @copyright   2018 Tim Joosten
- * @package     App\Http\Controllers\Frontend
+ * @package     Sijot\Http\Controllers\Frontend
  */
 class DefaultController extends Controller
 {
