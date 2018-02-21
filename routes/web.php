@@ -19,6 +19,7 @@ Route::get('/', 'Frontend\DefaultController@index');
 // Backend
 Route::get('/home', 'HomeController@index')->name('home');
 
+// TODO: Implementatie 'forbid-banned-middleware'
 Route::prefix('/admin')->group(function () {
     Route::resource('nieuws', 'Backend\ArticleController');
     Route::resource('gebruikers', 'Backend\UserController');
