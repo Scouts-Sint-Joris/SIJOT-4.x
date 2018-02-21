@@ -110,11 +110,17 @@ class UserController extends Controller
      * ---
      * Returns HTTP/1 - 404 When no user is found in the database storage. 
      * 
-     * @param  \Sijot\User  $user  The database entity from the user. 
+     * @param  int  $user  The database entity from the user. 
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(User $user): RedirectResponse
+    public function destroy(int $user): RedirectResponse
     {
-        //
+        $user = $this->users->findOrFail($user); 
+
+        if ($user->delete()) {
+            flash("De login voor {$user->name} is verwijderd uit de applicatie")->success()->important();
+        }
+
+        return redirect()->route('gebruikers.index');
     }
 }

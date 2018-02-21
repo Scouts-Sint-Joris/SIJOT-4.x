@@ -48,10 +48,10 @@
 
                                         <td> {{-- Options --}}
                                             <a href="" class="text-danger">
-                                                <i class="fa fa-fw fa-lock"></i>
+                                                <i data-toggle="tooltip" data-placement="bottom" title="Blokkeer" class="fa fa-fw fa-lock"></i>
                                             </a>
-                                            <a href="" class="text-danger">
-                                                <i class="fa fa-fw fa-close"></i>
+                                            <a href="#deleteUser" data-toggle="modal" data-username="{{ $user->name }}" data-user="{{ $user->id }}" class="text-danger">
+                                                <i data-toggle="tooltip" data-placement="bottom" title="Verwijder" class="fa fa-fw fa-close"></i>
                                             </a>
                                         </td> {{-- /END options --}}
                                     </tr>
@@ -66,4 +66,10 @@
             </div> {{-- /.tab-pane --}}
         </div> {{-- /.tab-content --}}
     </div>
+
+    @include('backend.users.modals.confirm-delete')
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/user-management.js')}}"></script>
+@endpush

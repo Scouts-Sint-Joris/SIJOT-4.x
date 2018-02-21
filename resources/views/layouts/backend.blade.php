@@ -79,10 +79,10 @@
                 <section class="sidebar"> {{-- sidebar: style can be found in sidebar.less --}}
                     <div class="user-panel"> {{-- Sidebar user panel --}}
                         <div class="pull-left image">
-                            @if (file_exists(public_path(auth()->user()->avatar)))
-                                <img src="{{ asset(auth()->user()->avatar) }}" class="img-circle" alt="{{ auth()->user()->name }}">
-                            @else
+                            @if (! file_exists(public_path(auth()->user()->avatar)))
                                 <img src="{{ asset('img/user.jpg') }}" class="img-circle" alt="{{ auth()->user()->name }}">
+                            @else
+                                <img src="{{ asset(auth()->user()->avatar) }}" class="img-circle" alt="{{ auth()->user()->name }}">
                             @endif
                         </div>
                         <div class="pull-left info">
@@ -184,6 +184,8 @@
         <script src="{{ asset('js/slimscroll.js') }}"></script>                                                 {{-- SlimScroll --}}
         <script src="{{ asset('js/fastclick.js') }}"></script>                                                  {{-- FastClick --}}
         <script src="{{ asset('js/backend.min.js') }}"></script>                                                {{-- AdminLTE App --}}
+
+        @stack('scripts') {{-- Specific page JavaScript stack --}}
 
         <script> $('div.alert').not('.alert-important').delay(3000).slideUp(300); </script>
     </body>
