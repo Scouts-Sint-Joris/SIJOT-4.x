@@ -52,11 +52,13 @@
 
                                         <td> {{-- Options --}}
                                             @if ($user->isBanned() && $currentUser->can('create-ban', $user))
+                                                <a href="#revokeBan" data-toggle="modal" data-username="{{ $user->name }}" data-user="{{ $user->id }}" class="text-success">
+                                                    <i data-toggle="tooltip" data-placement="bottom" title="Blokkering opheffen" class="fa fa-fw fa-lock"></i>
+                                                </a>
+                                            @elseif ($user->isNotBanned() && $currentUser->can('revoke-ban', $user))
                                                 <a href="#blockUser" data-toggle="modal" data-username="{{ $user->name}}" data-user="{{ $user->id }}" class="text-danger">
                                                     <i data-toggle="tooltip" data-placement="bottom" title="Blokkeer" class="fa fa-fw fa-lock"></i>
                                                 </a>
-                                            @elseif ($user->isNotBanned() && $currentUser->can('revoke-ban', $user))
-                                                
                                             @endif
 
                                             <a href="#deleteUser" data-toggle="modal" data-username="{{ $user->name }}" data-user="{{ $user->id }}" class="text-danger">
