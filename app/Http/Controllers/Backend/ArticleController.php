@@ -61,7 +61,7 @@ class ArticleController extends Controller
     /**
      * Function for storing a new article in the database storage. 
      * 
-     * @param  \Illuminate\Http\Requests\Backend\Articles\StoreValidator  $input  The user given input. (validated)
+     * @param  \Sijot\Http\Requests\Backend\Articles\StoreValidator  $input  The user given input. (validated)
      * @return \Illuminate\Http\RedirectResponse
      */
     public function store(StoreValidator $input): RedirectResponse
@@ -94,10 +94,10 @@ class ArticleController extends Controller
      * Returns HTTP/1 404 when no article is found in the storage
      * 
      * @param  \Sijot\Http\Requests\Backend\Articles\EditValidator  $input    User given input. (Validated)
-     * @param  \Sijot\Article                                       $article  Database entity from the article
+     * @param  string                                               $article  Slug form the article
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(EditValidator $input, Article $article): RedirectResponse
+    public function update(EditValidator $input, string $article): RedirectResponse
     {
         //
     }

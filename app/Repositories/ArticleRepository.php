@@ -28,7 +28,7 @@ class ArticleRepository extends Repository
      * Get a list of articles in paginated version.
      * 
      * @param  int  $perPage  The amount of results u want to display per page.
-     * @return \Illminate\Pagination\Paginator
+     * @return \Illuminate\Pagination\Paginator
      */
     public function getListing(int $perPage): Paginator
     {
@@ -46,5 +46,16 @@ class ArticleRepository extends Repository
         return $this->model->where('status', true)
             ->orderBy('created_at', 'ASC')
             ->simplePaginate($perPage);
+    }
+
+    /**
+     * @param bool $status
+     */
+    public function determineFlashSession(bool $status)
+    {
+        switch ($status) {
+            case true:  return flash('public')->success();
+            case false: return flash('draft')->warning();
+        }
     }
 }
