@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
         <link rel="stylesheet" href="{{ asset('css/all-skins.min.css') }}">
 
+        @stack('stylesheets') {{-- Specific page stack for css stylesheets --}}
+
         {{-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries --}}
         {{-- WARNING: Respond.js doesn't work if you view the page via file:// --}}
 

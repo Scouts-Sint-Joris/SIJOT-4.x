@@ -2,5 +2,8 @@
     "/js/app.js": "/js/app.js",
     "/css/auth.css": "/css/auth.css",
     "/css/app.css": "/css/app.css",
-    "/js/auth.js": "/js/auth.js"
+    "/js/auth.js": "/js/auth.js",
+    "/css/trumbowyg.css": "/css/trumbowyg.css",
+    "/js/trumbowyg.js": "/js/trumbowyg.js",
+    "/fonts/trumbowyg/icons.svg": "/fonts/trumbowyg/icons.svg"
 }

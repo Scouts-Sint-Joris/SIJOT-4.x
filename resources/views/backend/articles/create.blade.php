@@ -44,6 +44,12 @@
                     </div>
 
                     <div class="form-group">
+                        <div class="col-md-8">
+                            <textarea id="article-body"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
                         <div class="col-md-offset-2 col-md-10">
                             <button class="btn btn-sm btn-success" type="submit">
                                 <i class="fa fa-check"></i> Opslaan
@@ -60,3 +66,17 @@
         </div> {{-- /.tab-content --}}
     </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/trumbowyg.js') }}"></script>
+    <script>
+        $('#article-body').trumbowyg({
+            lang: 'nl', 
+            svgPath: '/fonts/trumbowyg/icons.svg',
+        });
+        </script>
+@endpush
+
+@push('stylesheets')
+    <link rel="stylesheet" href="{{ asset('css/trumbowyg.css') }}">
+@endpush
