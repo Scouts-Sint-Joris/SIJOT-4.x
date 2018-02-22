@@ -112,8 +112,8 @@
                             </a>
                         </li>
 
-                        <li class="">
-                            <a href="">
+                        <li class="{{ isActive('admin/lease*') }}">
+                            <a href="{{ route('lease.index') }}">
                                 <i class="fa fa-home" aria-hidden="true"></i> <span>Verhuringen</span>
                             </a>
                         </li>

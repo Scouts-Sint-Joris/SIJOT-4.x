@@ -27,7 +27,7 @@ class RestrictRepository extends Repository
     /**
      * Create the ban restriction in the database
      * 
-     * @param  \Sijot\User  $user  The database entity from the database 
+     * @param  \Sijot\User  $user  The database entity from the user
      * @return \Cog\Laravel\Ban\Models\Ban
      */
     public function create($user): Ban
@@ -35,8 +35,14 @@ class RestrictRepository extends Repository
         return $user->ban();
     }
 
-    public function revoke(): bool 
+    /**
+     * Revoke a user ban in the system.
+     *
+     * @param  \Sijot\User  $user  The database entity from the user.
+     * @return void
+     */
+    public function revoke($user): void
     {
-
+        $user->ban();
     }
 }

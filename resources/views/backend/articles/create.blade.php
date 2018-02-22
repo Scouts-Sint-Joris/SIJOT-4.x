@@ -24,7 +24,7 @@
                     <div class="form-group @error('titel', 'has-error')">
                         <label class="control-label col-md-2">Titel: <span class="text-danger">*</span></label>
 
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <input type="text" class="form-control" @input('titel') placeholder="Titel van het nieuwsbericht">
                             @error('titel')
                         </div>
@@ -33,7 +33,7 @@
                     <div class="form-group @error('status', 'has-error')">
                         <label class="control-label col-md-2">Status: <span class="text-danger">*</span></label>
 
-                        <div class="col-md-4">
+                        <div class="col-md-5">
                             <select class="form-control" @input('status')>
                                 <option value="">-- Selecteer een status voor het nieuws bericht --</option>
                                 
@@ -49,7 +49,7 @@
                     <div class="form-group @error('bericht', 'has-error')">
                         <label class="control-label col-md-2">Bericht: <span class="text-danger">*</span></label>
 
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                             <textarea id="article-body" @input('bericht') placeholder="Welk nieuws wil je delen met de wereld?">{{ old('bericht') }}</textarea>
                             
                             @if ($errors->has('bericht'))

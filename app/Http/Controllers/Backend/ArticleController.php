@@ -69,7 +69,7 @@ class ArticleController extends Controller
         $input->merge(['author_id' => $input->user()->id]);
 
         if ($this->articles->create($input->all())) {
-            $this->articles->determineFlashSession($input->status); // TODO Register function in the system. 
+            $this->articles->determineFlashSession($input->status); // TODO: register flash session in the func.
         }
 
         return redirect()->route('nieuws.index');
@@ -80,10 +80,10 @@ class ArticleController extends Controller
      * --- 
      * Returns HTTP/1 404 when no article is found in the storage
      * 
-     * @param  \Sijot\Article  $article  Database entity form the article 
+     * @param  int  $article  Unique identifier from the article
      * @return \Illuminate\View\View
      */
-    public function edit(Article $article): View
+    public function edit(int $article): View
     {
         //
     }

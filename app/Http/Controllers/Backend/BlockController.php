@@ -54,9 +54,10 @@ class BlockController extends Controller
 
         if (Gate::allows('create-ban', $user)) {     //! The given user entity is not the same then the authenticated user
             if ($this->restriction->create($user)) { //! The given user is blocked in the database
-                flash($user->name . ' is geblokkeerd in de applicatie voor 2 weken.s')->success()->important();
+                $this->logActivity($user,  "Heeft {$user->name} voor 2 weken geblokkeerd in de website");
+                flash($user->name . ' is geblokkeerd in de applicatie voor 2 weken.')->success()->important();
             }
-        } else { //! User is the same them the authenticated user
+        } else { //! User is the same then the authenticated user.
             flash('Helaas! Je kunt jezelf niet blokkeren in de applicatie!')->warning()->important();
         }
 
@@ -73,6 +74,17 @@ class BlockController extends Controller
      */
     public function destroy(int $user): RedirectResponse
     {
-       //
+       $user = $this->user->findOrFail($user);
+
+       if (Gate::allows('revoke-ban', $user)) { //! The given user entity is not the same then the authenticated user
+           $this->restriction->revoke($user);   //! The given user his ban is revoked in the database
+           $this->logActivity($user, "Heeft de blokkering van {$user->name} opgeheven");
+           flash($user->name . " is terug geactiveer in de applicatie.")->success()->important();
+       } else {
+           //! User is the samen then the authenticated user.
+           flash('Helaas! Je kunt jezelf niet blokkeren in de applicatie!')->warning()->important();
+       }
+
+       return redirect()->route('gebruikers.index');
     }
 }

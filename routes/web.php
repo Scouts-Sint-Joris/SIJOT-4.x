@@ -24,4 +24,5 @@ Route::prefix('/admin')->group(function () {
     Route::resource('nieuws', 'Backend\ArticleController');
     Route::resource('gebruikers', 'Backend\UserController');
     Route::resource('restrictie', 'Backend\BlockController');
+    Route::resource('lease', 'Backend\Lease\LeaseController');
 });
