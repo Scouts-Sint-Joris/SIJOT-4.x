@@ -64,7 +64,7 @@ class ArticleController extends Controller
         $input->merge(['author_id' => $input->user()->id]);
 
         if ($this->articles->create($input->all())) {
-            $this->articles->determineFlashSession();
+            $this->articles->determineFlashSession($input->status); // TODO Register function in the system. 
         }
 
         return redirect()->route('nieuws.index');
@@ -102,10 +102,10 @@ class ArticleController extends Controller
      * ---
      * Returns HTTP/1 404 when no article is found in the storage
      * 
-     * @param  \Sijot\Article  $article  Database entity from the article
+     * @param  int  $article  The unique identifier from the article in the database storage
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Article $article): RedirectResponse
+    public function destroy(int $article): RedirectResponse
     {
         //
     }

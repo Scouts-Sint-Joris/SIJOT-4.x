@@ -157,6 +157,13 @@
                                 <i class="fa fa-key" aria-hidden="true"></i> <span>API sleutels</span>
                             </a>
                         </li>
+
+                        <li>
+                            <a href="{{ url('/') }}">
+                                <i class="fa fa-chevron-left"></i>
+                                <span>Verlaat beheerspaneel</span>
+                            </a>
+                        </li>
                     </ul>
                 </section> {{-- /.sidebar --}}
             </aside>

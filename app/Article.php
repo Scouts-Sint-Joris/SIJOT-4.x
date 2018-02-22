@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * Database model for the articles
  * 
  * @todo Implement laravel sluggable.
+ * @todo Implement media library
  * 
  * @author      Tim Joosten <topairy@gmail.com>
  * @copyright   2018 Tim Joosten
