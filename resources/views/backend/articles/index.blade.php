@@ -36,7 +36,7 @@
                                         <td><strong>#{{ $article->id }}</strong></td>
                                         
                                         <td>  {{-- Status field --}}
-                                            @if ($article->status)) {{-- Public version --}}
+                                            @if ($article->status) {{-- Public version --}}
                                                 <span class="label label-success">Gepubliceerd</span>
                                             @else {{-- Draft version --}}
                                                 <span class="label label-info">Klad versie</span>
@@ -44,11 +44,23 @@
                                         </td> {{-- /Status field --}}
 
                                         <td>{{ $article->author->name }}</td>
-                                        <td><a href="{{ route('news.show', ['nieuw' => $article->slug]) }}">{{ $article->titel }}</a></td>
+                                        <td><a href="{{ route('nieuws.show', ['nieuw' => $article->slug]) }}">{{ $article->titel }}</a></td>
                                         <td>{{ $article->created_at->format('d/m/Y H:i:s') }}</td>
                                         <td>{{ $article->updated_at->format('d/m/Y H:i:s') }}</td>
                                         
                                         <td> {{-- Options --}}
+                                            {{-- //TODO: Tooltips --}}
+                                            <a href="" class="text-muted">
+                                                <i class="fa fa-fw fa-pencil"></i>
+                                            </a>
+
+                                            @if ($article->status) {{-- Article is published --}}
+                                            @else {{-- Article has a draft status --}}
+                                            @endif
+                                            
+                                            <a href="" class="text-danger">
+                                                <i class="fa fa-fw fa-close"></i>
+                                            </a>
                                         </td> {{-- /Options --}}
                                     </tr>
                                 @endforeach {{-- // End loop  --}}
