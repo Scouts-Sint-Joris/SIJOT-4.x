@@ -44,8 +44,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="control-label col-md-2">Bericht: <span class="text-danger">*</span></label>
+
                         <div class="col-md-8">
-                            <textarea id="article-body"></textarea>
+                            <textarea id="article-body" placeholder="Welk nieuws wil je delen met de wereld?" name="bericht">{{ old('bericht') }}</textarea>
+                            
+                            <span class="help-block">
+                                <span class="text-danger">*</span> 
+                                Dit veld is <a href="">markdown</a> ondersteund.
+                            </span>
                         </div>
                     </div>
 
