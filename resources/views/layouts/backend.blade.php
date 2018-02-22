@@ -82,9 +82,9 @@
                     <div class="user-panel"> {{-- Sidebar user panel --}}
                         <div class="pull-left image">
                             @if (! file_exists(public_path($currentUser->avatar)))
-                                <img src="{{ asset('img/user.jpg') }}" class="img-circle" alt="{{ auth()->user()->name }}">
+                                <img src="{{ asset('img/user.jpg') }}" class="img-circle" alt="{{ $currentUser->name }}">
                             @else
-                                <img src="{{ asset(auth()->user()->avatar) }}" class="img-circle" alt="{{ auth()->user()->name }}">
+                                <img src="{{ asset($currentUser->avatar) }}" class="img-circle" alt="{{ $currentUser->name }}">
                             @endif
                         </div>
                         <div class="pull-left info">
@@ -96,7 +96,9 @@
                         <div class="input-group">
                             <input type="text" name="q" class="form-control" placeholder="Search...">
                             <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+                                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                                    <i class="fa fa-search"></i>
+                                </button>
                             </span>
                         </div>
                     </form> {{-- /.search form --}}
