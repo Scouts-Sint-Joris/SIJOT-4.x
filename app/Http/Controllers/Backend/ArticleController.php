@@ -29,7 +29,7 @@ class ArticleController extends Controller
      */
     public function __construct(ArticleRepository $articles)
     {
-        $this->middleware(['auth']);
+        $this->middleware(['auth'])->except(['show']);
         $this->articles = $articles;
     }
 
@@ -51,6 +51,11 @@ class ArticleController extends Controller
     public function create(): View
     {
         return view('backend.articles.create');
+    }
+
+    public function show(string $slug): View 
+    {
+
     }
 
     /**

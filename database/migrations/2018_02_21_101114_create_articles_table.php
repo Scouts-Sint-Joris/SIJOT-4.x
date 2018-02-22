@@ -16,7 +16,8 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('author_id'); // TODO Register foreign key (on delete CASCADE null)
-            $table->boolean('status'); 
+            $table->boolean('status');
+            $table->string('slug'); 
             $table->string('titel'); 
             $table->text('bericht');
             $table->timestamps();

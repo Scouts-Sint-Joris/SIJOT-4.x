@@ -44,7 +44,7 @@
                                         </td> {{-- /Status field --}}
 
                                         <td>{{ $article->author->name }}</td>
-                                        <td>{{ $article->titel }}</td>
+                                        <td><a href="{{ route('news.show', ['nieuw' => $article->slug]) }}">{{ $article->titel }}</a></td>
                                         <td>{{ $article->created_at->format('d/m/Y H:i:s') }}</td>
                                         <td>{{ $article->updated_at->format('d/m/Y H:i:s') }}</td>
                                         

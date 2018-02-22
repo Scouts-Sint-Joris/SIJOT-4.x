@@ -2,6 +2,8 @@
 
 namespace Sijot;
 
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -10,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * ---
  * Database model for the articles
  * 
- * @todo Implement laravel sluggable.
  * @todo Implement media library
  * 
  * @author      Tim Joosten <topairy@gmail.com>
@@ -19,6 +20,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Article extends Model
 {
+    use HasSlug; 
+
     /**
      * Mass-assign fields for the database table. 
      * 
@@ -42,5 +45,19 @@ class Article extends Model
     {
         return $this->belongsTo(User::class, 'author_id')
             ->withDefault(['name' => 'Onbekende gebruiker']);
+    }
+
+    /**
+     * Get the options for generating the slug.
+     * 
+     * @return \Spatie\Sluggable\SlugOptions
+     */
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+            ->generateSlugsFrom('titel')
+            ->saveSlugsTo('slug')
+            ->slugsShouldBeNoLongerThan(50)
+            ->doNotGenerateSlugsOnUpdate();
     }
 }
