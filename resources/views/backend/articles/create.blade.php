@@ -21,38 +21,45 @@
                 <form method="POST" action="{{ route('nieuws.store') }}" class="form-horizontal">
                     @csrf {{-- Form field protection --}}
 
-                    <div class="form-group">
+                    <div class="form-group @error('titel', 'has-error')">
                         <label class="control-label col-md-2">Titel: <span class="text-danger">*</span></label>
 
                         <div class="col-md-4">
-                            <input type="text" class="form-control" placeholder="Titel van het nieuwsbericht">
+                            <input type="text" class="form-control" @input('titel') placeholder="Titel van het nieuwsbericht">
+                            @error('titel')
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group @error('status', 'has-error')">
                         <label class="control-label col-md-2">Status: <span class="text-danger">*</span></label>
 
                         <div class="col-md-4">
-                            <select class="form-control" name="status">
-                                <option>-- Selecteer een status voor het nieuws bericht --</option>
+                            <select class="form-control" @input('status')>
+                                <option value="">-- Selecteer een status voor het nieuws bericht --</option>
                                 
                                 {{-- Status indicators --}}
                                 <option value="true" @if (old('status') == 'true') selected @endif> Publiceer nieuws bericht </option>
                                 <option value="false" @if (old('status') == 'false') selected @endif> Klad versie van een nieuwsbericht </option>
-                             </select>
+                            </select>
+
+                             @error('status') {{-- Validation error view instance.  --}} 
                         </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group @error('bericht', 'has-error')">
                         <label class="control-label col-md-2">Bericht: <span class="text-danger">*</span></label>
 
                         <div class="col-md-8">
-                            <textarea id="article-body" placeholder="Welk nieuws wil je delen met de wereld?" name="bericht">{{ old('bericht') }}</textarea>
+                            <textarea id="article-body" @input('bericht') placeholder="Welk nieuws wil je delen met de wereld?">{{ old('bericht') }}</textarea>
                             
-                            <span class="help-block">
-                                <span class="text-danger">*</span> 
-                                Dit veld is <a href="">markdown</a> ondersteund.
-                            </span>
+                            @if ($errors->has('bericht'))
+                                @error('bericht')
+                            @else
+                                <span class="help-block">
+                                    <span class="text-danger">*</span> 
+                                    Dit veld is <a href="">markdown</a> ondersteund.
+                                </span>
+                            @endif
                         </div>
                     </div>
 

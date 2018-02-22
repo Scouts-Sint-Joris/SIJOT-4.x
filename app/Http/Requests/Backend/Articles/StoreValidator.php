@@ -4,6 +4,13 @@ namespace Sijot\Http\Requests\Backend\Articles;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * Class: Store Validator 
+ * 
+ * @author      Tim Joosten <topairy@gmail.com>
+ * @copyright   2018 Tim Joosten
+ * @package     Sijot\Http\Requests\Backend\Articles
+ */
 class StoreValidator extends FormRequest
 {
     /**
@@ -11,9 +18,9 @@ class StoreValidator extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -21,10 +28,12 @@ class StoreValidator extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'status' => 'required', 
+            'titel' => 'required', 
+            'bericht' => 'required'
         ];
     }
 }
