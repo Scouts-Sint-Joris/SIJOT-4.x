@@ -33,7 +33,13 @@
                         <label class="control-label col-md-2">Status: <span class="text-danger">*</span></label>
 
                         <div class="col-md-4">
-                        
+                            <select class="form-control" name="status">
+                                <option>-- Selecteer een status voor het nieuws bericht --</option>
+                                
+                                {{-- Status indicators --}}
+                                <option value="true" @if (old('status') == 'true') selected @endif> Publiceer nieuws bericht </option>
+                                <option value="false" @if (old('status') == 'false') selected @endif> Klad versie van een nieuwsbericht </option>
+                             </select>
                         </div>
                     </div>
 
