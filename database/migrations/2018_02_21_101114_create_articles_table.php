@@ -17,7 +17,7 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->integer('author_id'); // TODO Register foreign key (on delete CASCADE null)
             $table->boolean('status'); 
-            $table->string('title'); 
+            $table->string('titel'); 
             $table->text('bericht');
             $table->timestamps();
         });

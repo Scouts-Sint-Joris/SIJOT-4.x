@@ -3,6 +3,7 @@
 namespace Sijot;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  * Class Article 
@@ -30,4 +31,15 @@ class Article extends Model
      * @return array
      */
     protected $casts = ['created_at' => 'date:d-m-y H:i:s', 'updated_at' => 'datetime:d-m-Y H:i:s'];
+
+    /**
+     * Data relation for the author information. 
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function author(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'author_id')
+            ->withDefault(['name' => 'Onbekende gebruiker']);
+    }
 }

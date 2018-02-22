@@ -61,7 +61,13 @@ class ArticleController extends Controller
      */
     public function store(StoreValidator $input): RedirectResponse
     {
-        //
+        $input->merge(['author_id' => $input->user()->id]);
+
+        if ($this->articles->create($input->all())) {
+            $this->articles->determineFlashSession();
+        }
+
+        return redirect()->route('nieuws.index');
     }
 
     /**

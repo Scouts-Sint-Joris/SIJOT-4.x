@@ -34,4 +34,17 @@ class ArticleRepository extends Repository
     {
         return $this->model->simplePaginate($perPage);
     }
+
+    /**
+     * Get a list of articles in paginated format for the index page. 
+     * 
+     * @param  int  $perPage  The amount of results u want to display per Page; 
+     * @return \Illuminate\Pagination\Paginator
+     */
+    public function getFrontendListing($perPage): Paginator
+    {   
+        return $this->model->where('status', true)
+            ->orderBy('created_at', 'ASC')
+            ->simplePaginate($perPage);
+    }
 }

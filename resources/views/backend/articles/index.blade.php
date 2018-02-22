@@ -34,11 +34,19 @@
                                 @foreach ($articles as $article) {{-- Loop through the articles --}}
                                     <tr>
                                         <td><strong>#{{ $article->id }}</strong></td>
-                                        <td>{{ $article->status }}</td>
+                                        
+                                        <td>  {{-- Status field --}}
+                                            @if ($article->status)) {{-- Public version --}}
+                                                <span class="label label-success">Gepubliceerd</span>
+                                            @else {{-- Draft version --}}
+                                                <span class="label label-info">Klad versie</span>
+                                            @endif
+                                        </td> {{-- /Status field --}}
+
                                         <td>{{ $article->author->name }}</td>
                                         <td>{{ $article->titel }}</td>
-                                        <td>{{ $article->created_at }}</td>
-                                        <td>{{ $article->updated_at }}</td>
+                                        <td>{{ $article->created_at->format('d/m/Y H:i:s') }}</td>
+                                        <td>{{ $article->updated_at->format('d/m/Y H:i:s') }}</td>
                                         
                                         <td> {{-- Options --}}
                                         </td> {{-- /Options --}}

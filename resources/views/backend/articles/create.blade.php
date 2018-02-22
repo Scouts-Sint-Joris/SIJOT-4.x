@@ -38,8 +38,8 @@
                                 <option value="">-- Selecteer een status voor het nieuws bericht --</option>
                                 
                                 {{-- Status indicators --}}
-                                <option value="true" @if (old('status') == 'true') selected @endif> Publiceer nieuws bericht </option>
-                                <option value="false" @if (old('status') == 'false') selected @endif> Klad versie van een nieuwsbericht </option>
+                                <option value="1" @if (old('status')) selected @endif> Publiceer nieuws bericht </option>
+                                <option value="0" @if (old('status')) selected @endif> Klad versie van een nieuwsbericht </option>
                             </select>
 
                              @error('status') {{-- Validation error view instance.  --}} 
