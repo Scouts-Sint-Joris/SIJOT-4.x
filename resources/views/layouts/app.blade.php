@@ -31,7 +31,7 @@
                             <i class="fas fa-map-marker-alt"></i> Takken
                         </a>
 
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('verhuur.index') }}">
                             <i class="fa fa-home"></i> Verhuur
                         </a>
                     </ul>
@@ -64,7 +64,11 @@
                                     </form>
                                 </div>
                             </li>
-                        @endguest
+                        @else 
+                            <a class="nav-link" href="{{ route('login') }}" target="_blank">
+                                <i class="fa fa-sign-in-alt"></i> Aanmelden
+                            </a>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -83,10 +87,10 @@
                     <div class="row">
                         <div class="col-6">
                             <ul class="list-unstyled">
+                                <li><a href="{{ url('/') }}">Home</a></li>
+                                <li><a href="{{ route('disclaimer.index') }}">Disclaimer</a></li>
+                                <li><a href="">Privacy Statement</a></li>
                                 <li><a href="{{ route('login') }}">Aanmelden</a></li>
-                                <li><a href="">Disclaimer</a></li>
-                                <li><a href="">Verhuur</a></li>
-                                <li><a href="">Takken</a></li>
                             </ul>
                         </div>
                         <div class="col-6">

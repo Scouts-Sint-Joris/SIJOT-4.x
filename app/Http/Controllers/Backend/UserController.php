@@ -62,7 +62,11 @@ class UserController extends Controller
      */
     public function store(StoreValidator $input): RedirectResponse
     {
-        //
+        if ($this->users->create($input->all())) {
+            //
+        }
+
+        return redirect()->route('gebruikers.index');
     }
 
     /**
@@ -118,6 +122,7 @@ class UserController extends Controller
         $user = $this->users->findOrFail($user); 
 
         if ($user->delete()) {
+            $this->logActivity($user, 'Heeft een login verwijderd uit het systeem.');
             flash("De login voor {$user->name} is verwijderd uit de applicatie")->success()->important();
         }
 

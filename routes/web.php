@@ -15,6 +15,11 @@ Auth::routes();
 
 // Frontend
 Route::get('/', 'Frontend\DefaultController@index');
+Route::get('/disclaimer', 'Frontend\DisclaimerController@index')->name('disclaimer.index');
+
+// Frontend - Leases 
+Route::get('verhuur', 'Frontend\LeaseController@index')->name('verhuur.index');
+Route::get('verhuur/aanvragen', 'Frontend\LeaseController@create')->name('verhuur.create');
 
 // Backend
 Route::get('/home', 'HomeController@index')->name('home');

@@ -16,8 +16,6 @@ use Sijot\Repositories\ArticleRepository;
  */
 class DefaultController extends Controller
 {
-    private $articles; 
-
     /**
      * Get the frontpage for the web platform.
      *
