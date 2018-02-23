@@ -62,8 +62,9 @@ class UserController extends Controller
      */
     public function store(StoreValidator $input): RedirectResponse
     {
-        if ($this->users->create($input->all())) {
-            //
+        if ($user = $this->users->create($input->all())) {
+            $this->addActivity($user, "Heeft een login aan aangemaakt voor {$user->name}");
+            flash("Er is een login aangemaakt voor {$user->name} in de website.")->success();
         }
 
         return redirect()->route('gebruikers.index');
@@ -74,12 +75,12 @@ class UserController extends Controller
      * ---
      * Returns HTTP/1 - 404 When no user is found in the database storage. 
      * 
-     * @param  \Sijot\User  $user  The database entity from the user.
+     * @param  int  $user  The database entity from the user.
      * @return \Illuminate\View\View
      */
-    public function show(User $user): View
+    public function show(int $user): View
     {
-        //
+        $user = $this->users->findOrFail($user);
     }
 
     /**
@@ -87,12 +88,12 @@ class UserController extends Controller
      * ---
      * Returns HTTP/1 - 404 When no user is found in the database storage. 
      * 
-     * @param  \Sijot\User  $user  The database entity from the user.
+     * @param  int  $user  The database entity from the user.
      * @return \Illuminate\View\View
      */
-    public function edit(User $user): View
+    public function edit(int $user): View
     {
-        //
+        return view('backend.users.edit', ['user' => $this->users->findOrFail($user)]); 
     }
 
     /**
@@ -101,12 +102,19 @@ class UserController extends Controller
      * Returns HTTP/1 - 404 When no user is found in the database storage. 
      * 
      * @param  \Sijot\Http\Requests\Backend\Users\UpdateValidator  $input  The given user input. (Validated)
-     * @param  \Sijot\User                                         $user   The database entity from the user. 
+     * @param  int                                                 $user   The database entity from the user. 
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(UpdateValidator $input, User $user): RedirectResponse
+    public function update(UpdateValidator $input, int $user): RedirectResponse
     {
-        //
+        $user = $this->users->findOrFail($user); 
+
+        if ($user->update()) {
+            $this->addActivity($user, "Heeft de gebruiker {$user->name} gewijzigd in the systeem.");
+            flash($user->name . 'is aangepast in het systeem.')->success();
+        }
+
+        return redirect()->route('gebruikers.show', $user);
     }
 
     /**

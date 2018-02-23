@@ -18,7 +18,7 @@ class GroupRepository extends Repository
      *
      * @return string
      */
-    public function model()
+    public function model(): string
     {
         return Group::class;
     }

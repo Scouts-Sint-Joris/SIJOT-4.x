@@ -49,7 +49,10 @@ class ArticleRepository extends Repository
     }
 
     /**
-     * @param bool $status
+     * Determine the flash session. Based on the status. 
+     * 
+     * @param  bool  $status  type indicator for the status. 
+     * @return mixed
      */
     public function determineFlashSession(bool $status)
     {
