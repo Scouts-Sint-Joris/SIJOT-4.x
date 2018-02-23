@@ -20,6 +20,7 @@ Route::get('/disclaimer', 'Frontend\DisclaimerController@index')->name('disclaim
 // Frontend - Leases 
 Route::get('verhuur', 'Frontend\LeaseController@index')->name('verhuur.index');
 Route::get('verhuur/aanvragen', 'Frontend\LeaseController@create')->name('verhuur.create');
+Route::post('verhuur/aanvragen', 'Frontend\LeaseController@store')->name('verhuur.store');
 
 // Backend
 Route::get('/home', 'HomeController@index')->name('home');

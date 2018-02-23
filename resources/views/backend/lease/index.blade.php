@@ -43,7 +43,7 @@
                                             @endif
                                         </td> {{-- /Status indicator --}}
 
-                                        <td>{{ $lease->groep }}</td>
+                                        <td>{{ $lease->persoon }}</td>
                                         <td>{{ $lease->tel_nr }}</td>
                                         <td>Van {{ $lease->start_datum }} tot {{ $lease->eind_datum }}</td>
                                         <td>{{ $lease->created_at->format('d/m/Y H:i') }}u</td>

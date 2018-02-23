@@ -24,20 +24,20 @@
 
                         @include('flash::message')
 
-                        <form action="" method="">
+                        <form action="{{ route('verhuur.store') }}" method="POST">
                             @csrf {{-- Form field protection --}}
 
                             <div class="form-group row">
                                 <label class="col-md-3 col-form-label"><strong>Periode <span class="text-danger">*</span></strong></label>
 
                                 <div class="col-md-4">
-                                    <input type="date" class="form-control" placeholder="Start datum verhuring">
+                                    <input type="date" @input('start_datum') class="form-control" placeholder="Start datum verhuring">
                                 </div>
 
                                  <label class="text-center col-md-1 col-form-label">tot</label>
 
                                  <div class="col-md-4">
-                                    <input type="date" class="form-control" placeholder="Start datum verhuring">
+                                    <input type="date" @input('eind_datum') class="form-control" placeholder="Start datum verhuring">
                                 </div>
                             </div>
 

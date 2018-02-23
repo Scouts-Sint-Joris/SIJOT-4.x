@@ -6,7 +6,11 @@
         </a>
 
         <a href="" class="list-group-item">
-            <i class="fa fa-fw fa-calendar"></i> Verhuur kalender
+            <i class="fa fa-fw fa-map-marker-alt"></i> Bereikbaarheid
+        </a>
+
+        <a href="" class="list-group-item">
+            <i class="fa fa-fw fa-calendar-alt"></i> Verhuur kalender
         </a>
 
         <a href="{{ route('verhuur.create') }}" class="list-group-item {{ isActive('verhuur/aanvragen') }}">

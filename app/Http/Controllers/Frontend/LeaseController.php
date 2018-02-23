@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Sijot\Http\Controllers\Controller;
 use Illuminate\View\View;
 use Sijot\Repositories\LeaseRepository;
+use Illuminate\Http\RedirectResponse;
+use Sijot\Http\Requests\Frontend\Lease\StoreValidator;
 
 /**
  * Class LeaseController 
@@ -16,19 +18,6 @@ use Sijot\Repositories\LeaseRepository;
  */
 class LeaseController extends Controller
 {
-    /** @var \Sijot\Repositories\LeaseRepository $lease */
-    private $leases;
-
-    /**
-     * LeaseController constructor
-     * 
-     * @return void
-     */
-    public function __construct(LeaseRepository $leases) 
-    {
-        $this->leases = $leases;
-    }
-
     /**
      * Frontend info page about the lease of the group domain
      *  
@@ -42,19 +31,24 @@ class LeaseController extends Controller
     /**
      * The calendar for the conformed leases 
      * 
+     * @param  \Sijot\Repositories\LeaseRepository  $leases  The database layer for the confirmed leases.
      * @return \Illuminate\View\View
      */
     public function calendar(): View 
     {
-        return view(); 
+        return view('frontend.lease.calendar', [
+            'leases' => [] // TODO: Build up the database query
+        ]);
     }
 
     /**
+     * Page where we descirbe the domain access
+     * 
      * @return \Illuminate\View\View
      */
-    public function domainAccess(): iew 
+    public function domainAccess(LeaseRepository $leases): iew 
     {
-
+        return view();
     }
 
     /**
@@ -65,5 +59,16 @@ class LeaseController extends Controller
     public function create(): View 
     {
         return view('frontend.lease.create');
+    }
+
+    /**
+     * Store a lease request in the database storage
+     * 
+     * @param  \Sijot\Http\Requests\Frontend\Lease\StoreValidator  $input  The given user input (Validated).
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(StoreValidator $input): RedirectResponse
+    {
+        dd($input->all());
     }
 }

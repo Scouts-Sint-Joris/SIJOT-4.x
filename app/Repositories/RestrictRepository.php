@@ -32,6 +32,7 @@ class RestrictRepository extends Repository
      */
     public function create($user): Ban
     {
+        // TODO: Implement +2 weeks for the ban
         return $user->ban();
     }
 

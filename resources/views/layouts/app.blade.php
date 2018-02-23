@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}"> {{-- Meta csrf token --}}
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -34,6 +32,18 @@
                         <a class="nav-link" href="{{ route('verhuur.index') }}">
                             <i class="fa fa-home"></i> Verhuur
                         </a>
+
+                        <a class="nav-link" href="">
+                            <i class="fa fa-user-plus"></i> Lid worden
+                        </a>
+
+                        <a class="nav-link" href="">
+                            <i class="fa fa-camera-retro"></i> Foto's
+                        </a>
+
+                        <a class="nav-link" href="">
+                            <i class="fa fa-envelope"></i> Contact
+                        </a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -42,7 +52,7 @@
                         @if (auth()->check())
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ $currentUser->name }} <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('home')}}">
@@ -60,7 +70,7 @@
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
+                                        @csrf {{-- Form field protection --}}
                                     </form>
                                 </div>
                             </li>
@@ -103,10 +113,10 @@
                         </div>
                     </div>
                     <ul class="nav">
-                        <li class="nav-item"><a href="" class="nav-link social-facebook pl-0"><i class="fab fa-facebook fa-lg"></i></a></li>
+                        <li class="nav-item"><a href="https://www.facebook.com/sintjoristurnhout/" class="nav-link social-facebook pl-0"><i class="fab fa-facebook fa-lg"></i></a></li>
                         <li class="nav-item"><a href="" class="nav-link social-youtube"><i class="fab fa-youtube fa-lg"></i></a></li>
                         <li class="nav-item"><a href="" class="nav-link social-twitter"><i class="fab fa-twitter fa-lg"></i></a></li>
-                        <li class="nav-item"><a href="" class="nav-link social-github"><i class="fab fa-github fa-lg"></i></a></li>
+                        <li class="nav-item"><a href="https://github.com/Scouts-Sint-Joris" class="nav-link social-github"><i class="fab fa-github fa-lg"></i></a></li>
                     </ul>
                     <br>
                 </div>
@@ -115,15 +125,17 @@
                     <hr>
                 </div>
                 <div class="col-md-5">
-                    <form>
+                    <form method="POST" action="">
+                        @csrf {{-- Form field protection --}}
+
                         <fieldset class="form-group">
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Uw email adres">
                         </fieldset>
                         <fieldset class="form-group">
-                            <textarea class="form-control" id="exampleMessage" placeholder="Message"></textarea>
+                            <textarea class="form-control" id="exampleMessage" placeholder="Bericht"></textarea>
                         </fieldset>
                         <fieldset class="form-group text-xs-right">
-                            <button type="button" class="btn btn-secondary-outline">Send</button>
+                            <button type="button" class="btn btn-secondary-outline">Verstuur</button>
                         </fieldset>
                     </form>
                 </div>
