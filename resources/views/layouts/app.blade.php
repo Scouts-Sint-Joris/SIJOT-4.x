@@ -99,7 +99,7 @@
                             <ul class="list-unstyled">
                                 <li><a href="{{ url('/') }}">Home</a></li>
                                 <li><a href="{{ route('disclaimer.index') }}">Disclaimer</a></li>
-                                <li><a href="">Privacy Statement</a></li>
+                                <li><a href="{{ route('disclaimer.privacy') }}">Privacy Statement</a></li>
                                 <li><a href="{{ route('login') }}">Aanmelden</a></li>
                             </ul>
                         </div>

@@ -32,6 +32,6 @@ class DisclaimerController extends Controller
      */
     public function privacyStatement(): View 
     {
-
+        return view('frontend.disclaimer.privacy');
     }
 }
