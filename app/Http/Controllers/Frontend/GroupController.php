@@ -37,7 +37,7 @@ class GroupController extends Controller
      */
     public function index(): View 
     {
-        //
+        return view();
     }
 
     /**
@@ -47,6 +47,6 @@ class GroupController extends Controller
      */
     public function show(): View 
     {
-        //
+        return view();
     }
 }
