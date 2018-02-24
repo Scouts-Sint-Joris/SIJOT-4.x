@@ -1,8 +1,7 @@
 <li class="media mb-3">
     <a href="">
-        <img class="mr-3 rounded" src="http://via.placeholder.com/100x100" alt="Generic placeholder image">
+        <img class="mr-3 rounded" width="100" height="100" src="{{ $post->getMedia('images')->first()->getUrl('thumb-100') }}" alt="Generic placeholder image">
     </a>
-
     <div class="media-body">
         <h5 class="mt-0 mb-1 title-news">{{ ucfirst($post->titel) }}</h5>
 
