@@ -34,7 +34,7 @@ class LeaseController extends Controller
      * @param  \Sijot\Repositories\LeaseRepository  $leases  The database layer for the confirmed leases.
      * @return \Illuminate\View\View
      */
-    public function calendar(): View 
+    public function calendar(LeaseRepository $leases): View 
     {
         return view('frontend.lease.calendar', [
             'leases' => [] // TODO: Build up the database query
@@ -48,7 +48,7 @@ class LeaseController extends Controller
      */
     public function domainAccess(LeaseRepository $leases): iew 
     {
-        return view();
+        return view('frontend.lease.access');
     }
 
     /**

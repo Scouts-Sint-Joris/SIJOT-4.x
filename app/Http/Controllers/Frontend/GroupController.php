@@ -37,16 +37,19 @@ class GroupController extends Controller
      */
     public function index(): View 
     {
-        return view();
+        return view('frontend.groups.index', ['groups' => '']);
     }
 
     /**
      * Show a specific group in the application. 
      * 
+     * @param  string  $slug  The unique identifier (slug) for the group.
      * @return \Illuminate\View\View
      */
-    public function show(): View 
+    public function show(string $slug): View 
     {
-        return view();
+        return view('frontend.groups.show', [
+            'group' => $this->groups->getGroup($group)
+        ]);
     }
 }
