@@ -53,9 +53,17 @@ class ArticleController extends Controller
         return view('backend.articles.create');
     }
 
+    /**
+     * Show a specific news article in the application.
+     *
+     * @param  string  $slug  The uniqie identifier from the article in the database.
+     * @return \Illuminate\View\View
+     */
     public function show(string $slug): View 
     {
-
+        return view('frontend.articles.show', [
+            'article' => $this->articles->getArticle($slug) // TODO: Register repository function.
+        ]); 
     }
 
     /**
@@ -93,13 +101,20 @@ class ArticleController extends Controller
      * ---
      * Returns HTTP/1 404 when no article is found in the storage
      * 
-     * @param  \Sijot\Http\Requests\Backend\Articles\EditValidator  $input    User given input. (Validated)
-     * @param  string                                               $article  Slug form the article
+     * @param  \Sijot\Http\Requests\Backend\Articles\EditValidator  $input  User given input. (Validated)
+     * @param  string                                               $slug   Slug form the article
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(EditValidator $input, string $article): RedirectResponse
+    public function update(EditValidator $input, string $slug): RedirectResponse
     {
-        //
+        $article = $this->articles->getArticle($slug);
+
+        if ($article->update($input->all())) {
+            $this->addActivity($article, 'Heeft een artikel gewijzigd in de applicatie');
+            flash('Het artikel is aangepast in de applicatie.')->success();
+        }
+
+        return redirect()->route('nieuws.show', $article);
     }
 
     /**
@@ -112,6 +127,13 @@ class ArticleController extends Controller
      */
     public function destroy(int $article): RedirectResponse
     {
-        //
+        $article = $this->articles->findOrFail($article); 
+
+        if ($article->delete()) {
+            $this->addActivity($article, 'Heeft een artikel verwijderd in de website.');
+            flash('Het artikel is verwijderd uit de applicatie.')->info();
+        }
+
+        return redirect()->route('nieuws.index');
     }
 }

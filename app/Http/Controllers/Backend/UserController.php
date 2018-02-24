@@ -62,7 +62,12 @@ class UserController extends Controller
      */
     public function store(StoreValidator $input): RedirectResponse
     {
+        // TODO: Build up the repository function ->generatePassword()
+        $input->merge(['password' => $this->users->generatePassword()]);
+
         if ($user = $this->users->create($input->all())) {
+            // TODO: Create user mail notification to send the generated password. 
+
             $this->addActivity($user, "Heeft een login aan aangemaakt voor {$user->name}");
             flash("Er is een login aangemaakt voor {$user->name} in de website.")->success();
         }
@@ -80,7 +85,9 @@ class UserController extends Controller
      */
     public function show(int $user): View
     {
-        $user = $this->users->findOrFail($user);
+        return view('backend.users.show', [
+            'user' => $this->users->findOrFail($user)
+        ]);
     }
 
     /**
@@ -88,12 +95,16 @@ class UserController extends Controller
      * ---
      * Returns HTTP/1 - 404 When no user is found in the database storage. 
      * 
-     * @param  int  $user  The database entity from the user.
+     * @param  int                                 $user   The database entity from the user.
+     * @param  \Sijot\Repositories\RoleRepository  $roles  The abstraction layer for the roles in the database.
      * @return \Illuminate\View\View
      */
-    public function edit(int $user): View
+    public function edit(int $user, RoleRepository $roles): View
     {
-        return view('backend.users.edit', ['user' => $this->users->findOrFail($user)]); 
+        return view('backend.users.edit', [
+            'user'  => $this->users->findOrFail($user), 
+            'roles' => $roles->all(['name']),
+        ]); 
     }
 
     /**

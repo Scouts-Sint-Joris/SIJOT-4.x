@@ -43,7 +43,7 @@ class BlockController extends Controller
      * --- 
      * Returns HTTP/1 - 404 when no user is found. 
      * 
-     * @todo Implementatie mail notification to the blocked user.
+     * @todo Implementation mail notification to the blocked user.
      * 
      * @param  int  $user  The unique identifier from the user in the database storage.
      * @return \Illuminate\Http\RedirectResponse
@@ -68,6 +68,8 @@ class BlockController extends Controller
      * Revoke a user ban in the system; 
      * ---
      * Returns HTTP/1 - 404 when no user is found. 
+     * 
+     * @todo Implementation mail notification to the unblocked user.
      * 
      * @param  int  $user  The uniqie identifier from the user in the database storage
      * @return \Illuminate\Http\RedirectResponse
