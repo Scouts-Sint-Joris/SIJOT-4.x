@@ -55,7 +55,13 @@
                                             </a>
 
                                             @if ($article->status) {{-- Article is published --}}
+                                                <a class="text-warning" href="">
+                                                    <i class="fa fa-fw fa-undo"></i>
+                                                </a>
                                             @else {{-- Article has a draft status --}}
+                                                <a class="text-success" href="">
+                                                    <i class="fa fa-fw fa-check"></i>
+                                                </a>
                                             @endif
                                             
                                             <a href="" class="text-danger">
