@@ -69,7 +69,6 @@ return [
             'root' => public_path('images/articles'),
         ],
 
-
     ],
 
 ];
