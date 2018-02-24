@@ -61,4 +61,14 @@ class ArticleRepository extends Repository
             case false: return flash('draft')->warning();
         }
     }
+
+    /**
+     * Count all the articles in the database storage. 
+     * 
+     * @return int
+     */
+    public function countArticles(): int 
+    {
+        return $this->model->count();
+    }
 }

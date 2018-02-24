@@ -66,4 +66,12 @@ class UserRepository extends Repository
     {
         return bcrypt(str_random($length));
     }
+
+    /**
+     * Count all the user logins in the database storage. 
+     */
+    public function countUsers(): int 
+    {
+        return $this->model->count();
+    }
 }

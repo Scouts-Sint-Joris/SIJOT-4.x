@@ -34,4 +34,14 @@ class LeaseRepository extends Repository
     {
         return $this->model->simplePaginate($perPage);
     }
+
+    /**
+     * Count all the lease requests in the database storage.
+     * 
+     * @return int 
+     */
+    public function countLeases(): int 
+    {
+        return $this->model->count();
+    }
 }
