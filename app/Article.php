@@ -6,6 +6,7 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\Media;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait; 
 use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 
@@ -55,7 +56,7 @@ class Article extends Model implements HasMediaConversions
      * @param  Media|bool $media Het gegeven media item.
      * @return void
      */
-    public function registerMediaConversions(Media $media = null): void
+    public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb-100')
             ->height(100)

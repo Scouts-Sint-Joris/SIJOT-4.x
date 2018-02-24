@@ -76,7 +76,9 @@ class ArticleController extends Controller
     {
         $input->merge(['author_id' => $input->user()->id]);
 
-        if ($this->articles->create($input->all())) {
+        if ($article = $this->articles->create($input->all())) {
+            $article->addMedia($input->file('afbeelding'))->toMediaCollection('images');
+
             $this->articles->determineFlashSession($input->status); // TODO: register flash session in the func.
         }
 

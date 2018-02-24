@@ -20,7 +20,6 @@
             <div class="tab-pane active">
                 <form method="POST" action="{{ route('nieuws.store') }}" class="form-horizontal" enctype="multipart/form-data">
                     @csrf {{-- Form field protection --}}
-                    {{-- //TODO: Implement image update --}}
 
                     <div class="form-group @error('titel', 'has-error')">
                         <label class="control-label col-md-2">Titel: <span class="text-danger">*</span></label>
@@ -28,6 +27,15 @@
                         <div class="col-md-5">
                             <input type="text" class="form-control" @input('titel') placeholder="Titel van het nieuwsbericht">
                             @error('titel')
+                        </div>
+                    </div>
+
+                    <div class="form-group @error('afbeelding')">
+                        <label class="control-label col-md-2">Afbeelding: <span class="text-danger">*</span></label>
+
+                        <div class="col-md-5">
+                            <input type="file" class="form-control" @input('afbeelding')>
+                            @error('afbeelding')
                         </div>
                     </div>
 
