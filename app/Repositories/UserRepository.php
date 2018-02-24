@@ -53,4 +53,17 @@ class UserRepository extends Repository
     {
         return $this->model->simplePaginate($perPage);
     }
+
+    /**
+     * Function for generating user passwords. 
+     * ---
+     * used when an dmin create a newly user in the backend. 
+     * 
+     * @param  int  $length  The length of the random generated string.
+     * @return string
+     */
+    public function generatePassword(int $length = 16): string 
+    {
+        return bcrypt(str_random($length));
+    }
 }

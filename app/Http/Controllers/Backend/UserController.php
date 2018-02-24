@@ -62,7 +62,6 @@ class UserController extends Controller
      */
     public function store(StoreValidator $input): RedirectResponse
     {
-        // TODO: Build up the repository function ->generatePassword()
         $input->merge(['password' => $this->users->generatePassword()]);
 
         if ($user = $this->users->create($input->all())) {
