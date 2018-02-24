@@ -6,6 +6,8 @@ use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait; 
+use Spatie\MediaLibrary\HasMedia\Interfaces\HasMediaConversions;
 
 /**
  * Class Article 
@@ -18,9 +20,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @copyright   2018 Tim Joosten
  * @package     Sijot
  */
-class Article extends Model
+class Article extends Model implements HasMediaConversions 
 {
-    use HasSlug; 
+    use HasSlug, HasMediaTrait; 
 
     /**
      * Mass-assign fields for the database table. 
@@ -45,6 +47,20 @@ class Article extends Model
     {
         return $this->belongsTo(User::class, 'author_id')
             ->withDefault(['name' => 'Onbekende gebruiker']);
+    }
+
+    /**
+     * De configuratie voor de de afbeeldingen van het artikel. 
+     * 
+     * @param  Media|bool $media Het gegeven media item.
+     * @return void
+     */
+    public function registerMediaConversions(Media $media = null): void
+    {
+        $this->addMediaConversion('thumb-100')
+            ->height(100)
+            ->width(100)
+            ->performOnCollections('images');
     }
 
     /**

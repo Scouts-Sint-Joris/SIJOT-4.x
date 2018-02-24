@@ -18,7 +18,7 @@
         
         <div class="tab-content">
             <div class="tab-pane active">
-                <form method="POST" action="{{ route('nieuws.store') }}" class="form-horizontal">
+                <form method="POST" action="{{ route('nieuws.store') }}" class="form-horizontal" enctype="multipart/form-data">
                     @csrf {{-- Form field protection --}}
 
                     <div class="form-group @error('titel', 'has-error')">
