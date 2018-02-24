@@ -3,6 +3,9 @@
 namespace Sijot\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Sijot\Repositories\LeaseRepository;
+use Sijot\Repositories\UserRepository; 
+use Sijot\Repositories\ArticleRepository;
 
 /**
  * Class HomeController
@@ -34,8 +37,8 @@ class HomeController extends Controller
     public function index(LeaseRepository $leases, UserRepository $users, ArticleRepository $articles)
     {
         return view('home', [
-            'counts' => ['lease' => $lease->countLeases(), 'users' => $users->countUsers(), 'articles' => $articles->countArticles()], 
-            'leases' => $leases->getNewLeases(6)
+            'counts' => ['lease' => $leases->countLeases(), 'users' => $users->countUsers(), 'articles' => $articles->countArticles()], 
+            'leases' => [], // TODO: ->getNewLeases(6) | Method needs to be implemented for the leases.
         ]);
     }
 }
