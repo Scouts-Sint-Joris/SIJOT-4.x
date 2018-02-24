@@ -31,11 +31,30 @@
                         {{ method_field('PATCH') }}  {{-- HTTP/1 method spoofing --}}
                         @form($group)                {{-- Bind data to the form --}}
 
-                        <div class="form-group">
+                        <div class="form-group @error('titel', 'has-error')">
                             <label class="control-label col-md-2">Naam tak: <span class="text-danger">*</span></label>
 
                             <div class="col-md-5">
                                 <input type="text" placeholder="Naam van de tak" class="form-control" @input('titel')>
+                                @error('titel')
+                            </div>
+                        </div>
+
+                        <div class="form-group @error('sub_titel', 'has-error')">
+                            <label class="control-label col-md-2">Sub titel: <span class="text-danger">*</span></label>
+
+                            <div class="col-md-5">
+                                <input type="text" placeholder="Sub titel van de tak" class="form-control" @input('sub_titel')>
+                                @error('sub_titel')
+                            </div>
+                        </div>
+
+                        <div class="form-group @error('beschrijving', 'has-error')">
+                            <label class="control-label col-md-2">Tak beschrijving: <span class="text-danger">*</span></label>
+                       
+                            <div class="col-md-10">
+                                <textarea placeholder="Beschrijving van de tak" id="group-body">{{ $group->beschrijving }}</textarea>
+                                @error('beschrijving')
                             </div>
                         </div>
 
@@ -55,3 +74,17 @@
             @endforeach
         </div>
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/trumbowyg.js') }}"></script>
+    <script>
+        $('#group-body').trumbowyg({
+            lang: 'nl', 
+            svgPath: '/fonts/trumbowyg/icons.svg',
+        });
+        </script>
+@endpush
+
+@push('stylesheets')
+    <link rel="stylesheet" href="{{ asset('css/trumbowyg.css') }}">
+@endpush
