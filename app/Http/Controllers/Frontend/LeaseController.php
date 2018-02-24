@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use Sijot\Http\Controllers\Controller;
 use Illuminate\View\View;
 use Sijot\Repositories\LeaseRepository;
-use Illuminate\Http\RedirectResponse;
-use Sijot\Http\Requests\Frontend\Lease\StoreValidator;
 
 /**
  * Class LeaseController 
@@ -46,7 +44,7 @@ class LeaseController extends Controller
      * 
      * @return \Illuminate\View\View
      */
-    public function domainAccess(LeaseRepository $leases): iew 
+    public function domainAccess(LeaseRepository $leases): View 
     {
         return view('frontend.lease.access');
     }
@@ -59,16 +57,5 @@ class LeaseController extends Controller
     public function create(): View 
     {
         return view('frontend.lease.create');
-    }
-
-    /**
-     * Store a lease request in the database storage
-     * 
-     * @param  \Sijot\Http\Requests\Frontend\Lease\StoreValidator  $input  The given user input (Validated).
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function store(StoreValidator $input): RedirectResponse
-    {
-        dd($input->all());
     }
 }
