@@ -2,7 +2,7 @@
 
 namespace Sijot\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Sijot\Http\Controllers\Controller;
 use Sijot\Repositories\GroupRepository;
 
@@ -37,7 +37,9 @@ class GroupController extends Controller
      */
     public function index(): View 
     {
-        return view('frontend.groups.index', ['groups' => '']);
+        return view('frontend.groups.index', ['groups' => $this->groups->all(
+            ['titel', 'image_path', 'sub_titel', 'beschrijving', 'slug'])
+        ]);
     }
 
     /**

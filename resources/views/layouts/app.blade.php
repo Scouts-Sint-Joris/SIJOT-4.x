@@ -25,7 +25,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="{{ route('takken.index') }}">
                             <i class="fas fa-map-marker-alt"></i> Takken
                         </a>
 

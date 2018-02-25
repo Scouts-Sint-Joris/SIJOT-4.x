@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
         }
 
         // Execute other database seeders
-        $this->call(UserTableSeeder::class); //! Covers also roles and permissions database table.
+        $this->call(UserTableSeeder::class);    //! Covers also roles and permissions database table.
+        $this->call(GroupsTableSeeder::class);  //! Covers thue group standard description in the database table.
     }
 }

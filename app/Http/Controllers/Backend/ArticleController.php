@@ -79,6 +79,7 @@ class ArticleController extends Controller
         if ($article = $this->articles->create($input->all())) {
             $article->addMedia($input->file('afbeelding'))->toMediaCollection('images');
 
+            // TODO: Implementatie activity logger
             $this->articles->determineFlashSession($input->status); // TODO: register flash session in the func.
         }
 

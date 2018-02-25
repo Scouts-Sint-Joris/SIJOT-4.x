@@ -124,8 +124,8 @@
                             </a>
                         </li>
                         
-                        <li>
-                            <a href="">
+                        <li class="{{ isActive('admin/groups*')}}">
+                            <a href="{{ route('groups.index') }}">
                                 <i class="fa fa-leaf" aria-hidden="true"></i> <span>Takken</span>
                             </a>
                         </li>

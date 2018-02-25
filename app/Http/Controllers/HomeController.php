@@ -37,6 +37,7 @@ class HomeController extends Controller
     public function index(LeaseRepository $leases, UserRepository $users, ArticleRepository $articles)
     {
         return view('home', [
+            // TODO: Counters need to be implemented in the view.
             'counts' => ['lease' => $leases->countLeases(), 'users' => $users->countUsers(), 'articles' => $articles->countArticles()], 
             'leases' => [], // TODO: ->getNewLeases(6) | Method needs to be implemented for the leases.
         ]);
